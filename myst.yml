@@ -5,6 +5,12 @@ project:
     - name: Beatrice Marti
   copyright: '2025'
   github: mabesa/python-for-water-modellers
+  exclude:
+    - planning/**
+    - src/**
+    - .github/**
+    - _build/**
+    - LICENSE
   thebe:
     binder:
       repo: mabesa/python-for-water-modellers
