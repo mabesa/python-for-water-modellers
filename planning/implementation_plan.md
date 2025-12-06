@@ -1,8 +1,41 @@
 # Python for Water Modellers - Implementation Plan
-**Status:** Development Phase - Jupyter Book Infrastructure Complete  
-**Last Updated:** 6 December 2025
+**Status:** Active Development - Core Tutorial Modules Complete  
+**Last Updated:** 7 December 2025
 
 ---
+
+## Recent Progress (Dec 7, 2025)
+
+✅ **Module Structure Reorganized for Better Flow**
+- Module 2c → Module 3a: Python Basics (natural progression after setup)
+- Module 4 → Module 3b: AI-Assisted Coding (learn AI early, before complex tasks)
+- Module 3a → Module 4a: Getting Data (now with AI help available)
+- Module 3b → Module 4b: Discharge Analysis (capstone with all skills)
+- Logical flow: Setup → Code → AI → Real Project
+
+✅ **Module 2c: Python Basics for Water Modellers** - COMPLETE
+- Created bridge module between environment setup and data analysis
+- Covers: notebook cells (markdown vs code), variables, imports, functions
+- Uses hydraulic examples: Manning's equation, pipe discharge, critical depth, Froude number
+- Includes practice exercise (Froude number calculation)
+- Added Python interpreter selection instructions for first-time notebook users
+
+✅ **Module 3a: Getting Hydrological Data** - COMPLETE
+- Comprehensive overview of open hydrological datasets (CAMELS family, GRDC, Caravan)
+- Practical data access using PyGeoHydro library
+- Station exploration and selection workflow
+- Data download and CSV export
+- Added file paths explanation (absolute vs relative paths)
+- Quick visualization for data verification
+- Adapted for notebook-only workflow (no separate .py files)
+
+✅ **Module 3b: Discharge Analysis** - COMPLETE  
+- Complete discharge analysis workflow using real CAMELS data
+- Data loading and quality checks
+- Statistical analysis (mean, percentiles, monthly patterns)
+- Extreme event identification
+- Professional visualizations (hydrograph + monthly boxplots)
+- Simplified to use only downloaded data (removed sample data generation option)
 
 ## Recent Progress (Dec 6, 2025)
 
@@ -23,7 +56,7 @@
 - Using uv for dependency management in CI/CD pipeline
 - PDF export capability configured in `myst.yml`
 
-**Next Steps:** Create Module 1a content (VS Code installation guide)
+**Next Steps:** Execute notebooks with outputs, then commit and deploy
 
 ---
 
@@ -77,26 +110,23 @@ python-for-water-modellers/
 │       └── deploy.yml                # ✅ Auto-deploy to GitHub Pages (uv-based)
 ├── tutorials/
 │   ├── 00_introduction.ipynb         # ✅ COMPLETE
-│   ├── 01a_install_vscode.ipynb      # To be created
-│   ├── 01b_python_extension.ipynb    # To be created
-│   ├── 02a_understanding_environments.ipynb  # To be created
-│   ├── 02b_installing_uv.ipynb       # To be created
-│   ├── 03_first_water_script.ipynb   # To be created
-│   ├── 04_ai_assisted_coding.ipynb   # To be created
-│   └── 05_resources_next_steps.ipynb # To be created
+│   ├── 01a_vscode_installation.ipynb # ✅ COMPLETE
+│   ├── 01b_python_extension.ipynb    # ✅ COMPLETE
+│   ├── 02a_environment_concepts.ipynb # ✅ COMPLETE
+│   ├── 02b_installing_uv.ipynb       # ✅ COMPLETE
+│   ├── 03a_python_basics.ipynb       # ✅ COMPLETE (formerly 02c)
+│   ├── 03b_ai_assisted_coding.ipynb  # To be created (formerly Module 4)
+│   ├── 04a_getting_data.ipynb        # ✅ COMPLETE (formerly 03a)
+│   ├── 04b_discharge_analysis.ipynb  # ✅ COMPLETE (formerly 03b)
+│   └── 05_resources_next_steps.ipynb # To be created (formerly Module 5)
 ├── _build/                            # ✅ Jupyter Book build output (gitignored)
 │   ├── html/                          # Static website files
 │   └── templates/                     # MyST templates
-├── data/                              # To be created
-│   ├── sample_aare_discharge.csv     # To be created
-│   ├── sample_alpine_discharge.csv   # To be created
-│   └── data_sources.md               # To be created
-├── examples/                          # To be created
-│   ├── analyze_discharge.py          # To be created
-│   ├── flow_statistics.py            # To be created
-│   └── create_hydrograph.py          # To be created
+├── data/                              # ✅ Created
+│   └── camels_01013500_discharge.csv # ✅ Sample data (downloaded in Module 3a)
+├── examples/                          # For future standalone scripts
 ├── planning/
-│   ├── IMPLEMENTATION_PLAN.md        # This file (updated)
+│   ├── implementation_plan.md        # This file (updated)
 │   ├── tutorial_plan.md              # Master planning document
 │   ├── example_content_first_water_modelling_script.md
 │   ├── llm_coding_guide.md
@@ -130,17 +160,179 @@ python-for-water-modellers/
 
 ---
 
-### ⏭️ Module 1a: Installing VS Code (NEXT TO CREATE)
-**File:** `01a_install_vscode.ipynb`  
-**Status:** Not started  
+### Module 3a: Python Basics for Water Modellers (COMPLETE)
+**File:** `03a_python_basics.ipynb`  
+**Status:** ✅ Complete (formerly Module 2c)  
+**Time:** 20-25 minutes
+
+**Content:**
+- Understanding notebook cells (markdown vs code)
+- First code cell execution and Python interpreter selection
+- Variables and calculations (Manning's equation example)
+- Basic operators and math operations
+- Imports (math module for π, sqrt)
+- Functions: anatomy, creating reusable calculations
+- Hydraulic examples: pipe discharge, critical depth
+- Practice exercise: Froude number calculation
+- Engineering best practices: units in docstrings, descriptive names
+
+**Dependencies:** Module 2b complete  
+**Deliverables:** Understanding of Python fundamentals needed for data analysis
+
+**Key Features:**
+- Natural progression after environment setup
+- All examples use hydraulic/hydrological formulas
+- Includes both worked examples and practice exercises
+- Prepares students for pandas/matplotlib in Module 4
+
+---
+
+### Module 3b: AI-Assisted Coding (TO BE CREATED)
+**File:** `03b_ai_assisted_coding.ipynb`  
+**Status:** ⏭️ Next to create (formerly Module 4)  
+**Time:** 20-30 minutes
+
+**Content:**
+- **WHAT AI CAN DO:**
+  - Write code from descriptions
+  - Debug errors
+  - Explain existing code
+  - Suggest improvements
+- **WHAT AI CANNOT DO:**
+  - Validate conceptual models
+  - Know correct equation for flow regime
+  - Verify physical plausibility
+  - **Critical warning for water modellers**
+- **EFFECTIVE PROMPTING:**
+  - Template structure
+  - Vague vs. specific examples
+  - Domain context (units, water engineering terms)
+- **QUICK DEMO:**
+  - Take Python basics examples
+  - Ask AI to add new calculations
+  - Copy, test, verify result
+- **VERIFICATION STRATEGIES:**
+  - Test with known solutions
+  - Sanity checks (units, magnitudes)
+  - Compare with analytical equations
+  - When to trust vs. verify
+
+**Dependencies:** Module 3a (Python basics)  
+**Deliverables:**
+- Understanding of AI limitations
+- Ability to write effective prompts
+- Verification strategies
+
+**Strategic Placement:** Teaching AI assistance early means students can use it when tackling real data in Modules 4a and 4b.
+
+---
+
+### Module 4a: Getting Hydrological Data (COMPLETE)
+**File:** `04a_getting_data.ipynb`
+**Status:** ✅ Complete (formerly Module 3a)  
+**Time:** 25-30 minutes
+
+**Content:**
+- **THE DATA CHALLENGE:**
+  - Why getting data is often the hardest part
+  - Different formats, sources, quality issues
+  - The value of standardized datasets
+- **OPEN DATA SOURCES:**
+  - Global datasets: Caravan, GRDC, GloFAS
+  - Regional CAMELS family: CAMELS-US, CAMELS-CH, CAMELS-CL, CAMELS-BR, etc.
+  - Brief mention of national databases
+- **PRACTICAL: USING PYGEOHYDRO:**
+  - Access CAMELS dataset programmatically
+  - Explore available stations
+  - Filter and select stations by criteria
+  - Download streamflow data
+  - Understanding file paths (absolute vs relative)
+  - Save to CSV for offline use
+- **FOR SWISS-SPECIFIC WORK:**
+  - CAMELS-CH overview and access (Zenodo)
+  - Citation requirements
+- **DATA QUALITY CONSIDERATIONS:**
+  - Missing values, suspicious values
+  - Time series continuity
+  - Physical plausibility checks
+
+**Dependencies:** Module 3a (Python basics), Module 3b (AI assistance available)  
+**Deliverables:**
+- Understanding of open hydrological data landscape
+- Ability to fetch CAMELS data via Python
+- Local CSV file ready for analysis
+
+**Key Features:**
+- Students now have AI assistance for troubleshooting
+- Notebook-only workflow (no separate .py files)
+- File paths explanation included
+- Real CAMELS data downloaded
+
+---
+
+### Module 4b: Your First Water Modelling Script (COMPLETE)
+**File:** `04b_discharge_analysis.ipynb`
+**Status:** ✅ Complete (formerly Module 3b)  
+**Time:** 40-50 minutes (hands-on)
+
+**Content:**
+- **DATA VERIFICATION:**
+  - Check for downloaded data from Module 4a
+  - List available CSV files
+- **DATA LOADING:**
+  - Load CSV discharge data
+  - Initial data exploration
+  - Data type verification
+- **DATA PREPARATION:**
+  - Convert dates to datetime
+  - Set date as index for time-series operations
+  - Handle missing values
+- **STATISTICAL ANALYSIS:**
+  - Calculate flow statistics (mean, median, std, min, max)
+  - Compute percentiles (Q10, Q90)
+  - Monthly summary statistics
+- **EXTREME EVENTS:**
+  - Identify high and low flow periods
+  - Find maximum and minimum events
+- **VISUALIZATIONS:**
+  - Hydrograph with mean line and high flow markers
+  - Monthly distribution boxplot
+  - Save plots to files
+- **CODE UNDERSTANDING:**
+  - Key pandas operations explained
+  - Design patterns highlighted
+  - Adaptation guidelines for own data
+
+**Dependencies:** Module 4a complete (data downloaded), Module 3b (AI assistance)  
+**Deliverables:**
+- Complete discharge analysis workflow
+- Generated plots and statistics
+- Understanding of pandas basics for time series
+
+**Key Features:**
+- Capstone project using all learned skills
+- Students can use AI for extensions and debugging
+- Uses real CAMELS data
+- Comprehensive explanations for beginners
+
+---
+
+### Module 5: Resources & Next Steps (TO BE CREATED)
+**File:** `05_resources_next_steps.ipynb`  
+**Status:** To be created (formerly Module 5)  
+**Time:** Reference (browsable)
+
+### ⏭️ Module 1a: Installing VS Code (COMPLETE)
+**File:** `01a_vscode_installation.ipynb`  
+**Status:** ✅ Complete  
 **Time:** 15-20 minutes  
 **Format:** Guided notebook with external links
 
 **Content:**
 - **WHY:** What is an IDE? Why VS Code?
 - **INSTALLATION:** 
-  - Link to [VS Code official download](https://code.visualstudio.com/)
-  - Link to [Getting Started video](https://code.visualstudio.com/docs/getstarted/introvideos)
+  - Link to VS Code official download
+  - Link to Getting Started video
   - Platform-specific notes (Windows/Mac/Linux)
 - **VERIFICATION:** 
   - Open VS Code
@@ -158,16 +350,16 @@ python-for-water-modellers/
 
 ---
 
-### Module 1b: Python Extension Setup
+### Module 1b: Python Extension Setup (COMPLETE)
 **File:** `01b_python_extension.ipynb`  
-**Status:** Not started  
+**Status:** ✅ Complete  
 **Time:** 10-15 minutes
 
 **Content:**
 - **WHY:** What are extensions? Why Python extension?
 - **INSTALLATION:**
   - Step-by-step with screenshots
-  - Link to [Python extension guide](https://code.visualstudio.com/docs/python/python-tutorial)
+  - Link to Python extension guide
 - **VERIFICATION:**
   - Create test.py file
   - See syntax highlighting
@@ -182,9 +374,9 @@ python-for-water-modellers/
 
 ---
 
-### Module 2a: Understanding Environment Management
-**File:** `02a_understanding_environments.ipynb`  
-**Status:** Not started  
+### Module 2a: Understanding Environment Management (COMPLETE)
+**File:** `02a_environment_concepts.ipynb`  
+**Status:** ✅ Complete  
 **Time:** 15 minutes (conceptual, no coding)
 
 **Content:**
@@ -211,14 +403,14 @@ python-for-water-modellers/
 
 ---
 
-### Module 2b: Installing & Using uv
+### Module 2b: Installing & Using uv (COMPLETE)
 **File:** `02b_installing_uv.ipynb`  
-**Status:** Not started  
+**Status:** ✅ Complete  
 **Time:** 20-30 minutes
 
 **Content:**
 - **INSTALLATION:**
-  - Link to [uv installation guide](https://docs.astral.sh/uv/getting-started/installation/)
+  - Link to uv installation guide
   - Platform-specific commands
   - Verification: `uv --version`
 - **FIRST PROJECT:**
@@ -239,57 +431,11 @@ python-for-water-modellers/
   - Simple script importing packages
   - Create test plot
 - **LINKS:**
-  - [Real Python uv guide](https://realpython.com/python-uv/)
-  - [uv docs](https://docs.astral.sh/uv/)
+  - Real Python uv guide
+  - uv docs
 
 **Dependencies:** Modules 1a, 1b, 2a  
 **Deliverables:** Working uv setup, first project created
-
----
-
-### Module 3: Your First Water Modelling Script
-**File:** `03_first_water_script.ipynb`  
-**Status:** Not started  
-**Time:** 45-60 minutes (hands-on)
-
-**Content:**
-- **MOTIVATION:** Real-world hydrological analysis
-- **DATA:**
-  - CAMELS-CH dataset introduction
-  - Download/access instructions
-  - Sample: Aare at Untersiggenthal
-- **THE SCRIPT:**
-  - Load CSV discharge data
-  - Data quality checks (missing values)
-  - Calculate flow statistics (mean, Q10, Q90, monthly)
-  - Create hydrograph plot
-  - Monthly distribution box plot
-- **UNDERSTANDING:**
-  - Why pandas? Why set date as index?
-  - Code explanations for beginners
-  - How to modify for your data
-- **REAL-WORLD ISSUES:**
-  - Handling missing data
-  - Ice-affected periods
-  - Outlier detection
-  - Rating curve changes
-- **WORKING WITH CAMELS-CH:**
-  - Dataset overview
-  - How to access more stations
-  - Common data issues
-
-**Dependencies:** Module 2b complete (uv working)  
-**Data Required:** Sample CSV files  
-**Deliverables:** 
-- Working analysis script
-- Generated plots
-- Understanding of pandas basics
-
-**ACTION ITEMS:**
-- [ ] Source/prepare CAMELS-CH sample data
-- [ ] Create 2-3 sample CSV files (different stations)
-- [ ] Document data provenance
-- [ ] Test code with real data
 
 ---
 
@@ -541,32 +687,39 @@ Before creating each module, verify:
 |--------|-----------------|---------|-------|--------|
 | 0 | ✅ Complete | ✅ | 2h | ✅ Done |
 | Infrastructure | ✅ Complete | ✅ | 3h | ✅ Done (MyST migration) |
-| 1a | 1-2h | 30min | 2.5h | ⏭️ Next |
-| 1b | 1h | 30min | 1.5h | Pending |
-| 2a | 1.5h | 30min | 2h | Pending |
-| 2b | 2-3h | 1h | 4h | Pending |
-| 3 | 3-4h | 1h | 5h | Pending |
-| 4 | 2h | 30min | 2.5h | Pending |
-| 5 | 2h | 30min | 2.5h | Pending |
-| **Completed** | | | **5h** | |
-| **Remaining** | | | **19.5h** | |
-| **Total** | | | **~24.5h** | |
+| 1a | ✅ Complete | ✅ | 2.5h | ✅ Done |
+| 1b | ✅ Complete | ✅ | 1.5h | ✅ Done |
+| 2a | ✅ Complete | ✅ | 2h | ✅ Done |
+| 2b | ✅ Complete | ✅ | 4h | ✅ Done |
+| 3a | ✅ Complete | ✅ | 2h | ✅ Done (Python Basics, formerly 2c) |
+| 3b | 2h | 30min | 2.5h | ⏭️ Next (AI-Assisted Coding, formerly 4) |
+| 4a | ✅ Complete | ✅ | 5h | ✅ Done (Getting Data, formerly 3a) |
+| 4b | ✅ Complete | ✅ | 5h | ✅ Done (Analysis, formerly 3b) |
+| 5 | 2h | 30min | 2.5h | Pending (Resources, formerly 5) |
+| **Completed** | | | **27h** | |
+| **Remaining** | | | **5h** | |
+| **Total** | | | **~32h** | |
 
-**Data prep:** +3-4h (not started)  
+**Current status:** Execute notebooks → Deploy  
 **Final review:** +2h (after all modules)  
-**Grand total:** ~29-30 hours (5h completed, ~25h remaining)
+**Grand total:** ~34 hours (27h completed, ~7h remaining)
 
 ---
 
 ## Next Immediate Actions
 
 1. ✅ **~~Migrate to Jupyter Book 2.x~~** (Complete)
-2. ✅ **~~Update README.md~~** (Complete - learner-focused landing page)
-3. ✅ **~~Test local build~~** (Complete - server running successfully)
-4. ⏭️ **Create Module 1a:** VS Code installation guide (NEXT)
-5. **Data preparation:** Source CAMELS-CH samples (needed before Module 3)
-6. **Test full workflow:** Create module → build → commit → deploy → verify
-7. **Iterate:** Continue with remaining modules
+2. ✅ **~~Update README.md~~** (Complete)
+3. ✅ **~~Test local build~~** (Complete)
+4. ✅ **~~Create Modules 1a, 1b, 2a, 2b~~** (Complete)
+5. ✅ **~~Create Module 2c~~** (Complete - bridge module)
+6. ✅ **~~Create Modules 3a, 3b~~** (Complete)
+7. ✅ **~~Reorganize module structure~~** (Complete - better logical flow)
+8. ⏭️ **Execute all notebooks with outputs** (IN PROGRESS)
+9. ⏭️ **Commit and deploy to GitHub Pages** (NEXT)
+10. **Create Module 3b:** AI-assisted coding
+11. **Create Module 5:** Resources and next steps
+12. **Final review:** Polish and verify all content
 
 ---
 

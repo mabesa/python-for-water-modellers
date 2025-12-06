@@ -33,6 +33,12 @@ project:
       title: Understanding Environments
     - file: tutorials/02b_installing_uv.ipynb
       title: Installing and Using uv
+    - file: tutorials/03a_python_basics.ipynb
+      title: Python Basics for Water Modellers
+    - file: tutorials/04a_getting_data.ipynb
+      title: Getting Hydrological Data
+    - file: tutorials/04b_discharge_analysis.ipynb
+      title: Your First Water Script
 site:
   title: Python for Water Modellers
   options:

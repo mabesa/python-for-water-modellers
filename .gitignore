@@ -18,3 +18,10 @@ _build/
 
 # VS Code
 .vscode/
+
+# Data files (downloaded, not tracked)
+data/
+
+# PyGeoHydro/aiohttp cache
+tutorials/cache/
+cache/

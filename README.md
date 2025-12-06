@@ -34,18 +34,20 @@ This course is organized into focused modules that build on each other:
 Understand why Python is valuable for water modelling and what you'll need to get started.
 
 **Module 1: Setting Up Your Development Environment**  
-Install VS Code and Python, and configure your workspace for water modelling projects.
+Install VS Code and the Python extension to create your coding workspace.
 
 **Module 2: Understanding Python Environment Management**  
 Learn about virtual environments and the modern `uv` tool for managing Python packages.
 
-**Module 3: Your First Water Modelling Script**  
-Write a real script that analyzes Swiss discharge data from the CAMELS-CH dataset.
+**Module 3: Python Fundamentals for Water Modellers**  
+- **3a: Python Basics** - Learn variables, functions, and imports through hydraulic calculations
+- **3b: AI-Assisted Coding** - Discover how AI can help you write code faster (coming soon)
 
-**Module 4: AI-Assisted Coding with GitHub Copilot**  
-Discover how AI can help you write code faster and overcome learning barriers.
+**Module 4: Real-World Data Analysis**  
+- **4a: Getting Hydrological Data** - Access open streamflow datasets programmatically
+- **4b: Your First Water Modelling Script** - Analyze real discharge data from CAMELS
 
-**Module 5: Resources & Next Steps**  
+**Module 5: Resources & Next Steps** (coming soon)  
 Find the best learning resources and community support for your continued journey.
 
 ## How to Use This Tutorial
