@@ -27,6 +27,7 @@ project:
       title: Introduction & Prerequisites
 site:
   title: Python for Water Modellers
+  base_url: /python-for-water-modellers
   options:
     logo_text: Python for Water Modellers
     favicon: ''
