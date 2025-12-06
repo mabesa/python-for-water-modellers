@@ -440,7 +440,7 @@ git push
 
 ### Verification
 - Check Actions tab for green checkmark
-- Visit: `https://hydrosolutions.github.io/python-for-water-modellers`
+- Visit: `https://mabesa.github.io/python-for-water-modellers`
 - Navigate between modules
 - Test search, download buttons
 
@@ -491,7 +491,7 @@ Before creating each module, verify:
 - [ ] **Package manager:** Use `uv` commands, not `pip`
 - [ ] **Dependencies:** Defined in `pyproject.toml`, not requirements.txt
 - [ ] **File paths:** Consistent with repository structure
-- [ ] **GitHub org:** `hydrosolutions/python-for-water-modellers`
+- [ ] **GitHub org:** `mabesa/python-for-water-modellers`
 - [ ] **TOC:** Module added to `myst.yml` under `project.toc` with correct path
 - [ ] **Jupyter Book version:** 2.x (MyST format), not legacy 1.x
 - [ ] **Config file:** Update `myst.yml`, not `_config.yml` or `_toc.yml`

@@ -4,10 +4,10 @@ project:
   authors:
     - name: Beatrice Marti
   copyright: '2025'
-  github: hydrosolutions/python-for-water-modellers
+  github: mabesa/python-for-water-modellers
   thebe:
     binder:
-      repo: hydrosolutions/python-for-water-modellers
+      repo: mabesa/python-for-water-modellers
       provider: github
       url: https://mybinder.org
       ref: main

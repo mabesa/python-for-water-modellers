@@ -287,7 +287,7 @@ Each tutorial notebook serves as a **curated guide** that:
 
 ### Primary Platform: GitHub Repository
 
-**Repository:** `github.com/hydrosolutions/python-for-water-modellers`
+**Repository:** `github.com/mabesa/python-for-water-modellers`
 
 **Why GitHub?**
 - ✅ Free hosting for educational content

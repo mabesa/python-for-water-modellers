@@ -90,7 +90,7 @@ Detailed installation instructions are in Module 1.
 
 If you're interested in contributing to this tutorial or running it locally for development:
 
-- **Repository**: [github.com/hydrosolutions/python-for-water-modellers](https://github.com/hydrosolutions/python-for-water-modellers)
+- **Repository**: [github.com/mabesa/python-for-water-modellers](https://github.com/mabesa/python-for-water-modellers)
 - **Package Manager**: uv ([installation guide](https://github.com/astral-sh/uv))
 - **Python Version**: 3.12+
 - **Build System**: Jupyter Book 2.x with MyST
