@@ -29,6 +29,10 @@ project:
       title: Installing VS Code
     - file: tutorials/01b_python_extension.ipynb
       title: Python Extension Setup
+    - file: tutorials/02a_environment_concepts.ipynb
+      title: Understanding Environments
+    - file: tutorials/02b_installing_uv.ipynb
+      title: Installing and Using uv
 site:
   title: Python for Water Modellers
   options:
