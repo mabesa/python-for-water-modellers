@@ -44,6 +44,13 @@ jobs:
         run: |
           uv run jupyter-book build --html .
       
+      - name: List build output
+        run: |
+          echo "Contents of _build directory:"
+          ls -la _build/ || echo "_build directory not found"
+          echo "Contents of _build/html directory:"
+          ls -la _build/html/ || echo "_build/html directory not found"
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
