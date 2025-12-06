@@ -40,22 +40,15 @@ jobs:
         run: |
           uv sync --all-groups
       
-      - name: Build Jupyter Book site
+      - name: Build Jupyter Book
         run: |
           cd $GITHUB_WORKSPACE
-          uv run jupyter-book build --site
-      
-      - name: List build output
-        run: |
-          echo "Contents of _build directory:"
-          ls -la _build/ || echo "_build directory not found"
-          echo "Contents of _build/site directory:"
-          ls -la _build/site/ || echo "_build/site directory not found"
-      
+          uv run jupyter-book build .
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '_build/site'
+          path: '_build/html'
 
   deploy:
     needs: build
