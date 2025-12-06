@@ -1,0 +1,20 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Jupyter Book build artifacts
+_build/
+.jupyter_cache/
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/

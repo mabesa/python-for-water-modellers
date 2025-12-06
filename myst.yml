@@ -1,0 +1,28 @@
+version: 1
+project:
+  title: Python for Water Modellers
+  authors:
+    - name: Beatrice Marti
+  copyright: '2025'
+  github: hydrosolutions/python-for-water-modellers
+  thebe:
+    binder:
+      repo: hydrosolutions/python-for-water-modellers
+      provider: github
+      url: https://mybinder.org
+      ref: main
+  exports:
+    - format: pdf
+      template: plain_latex_book
+      output: exports/python-for-water-modellers.pdf
+  toc:
+    - file: README.md
+    - file: tutorials/00_introduction.ipynb
+      title: Introduction & Prerequisites
+site:
+  title: Python for Water Modellers
+  options:
+    logo_text: Python for Water Modellers
+    favicon: ''
+    folders: true
+  template: book-theme

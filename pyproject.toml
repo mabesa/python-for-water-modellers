@@ -1,0 +1,28 @@
+[project]
+name = "python-for-water-modellers"
+version = "0.1.0"
+description = "A Python tutorial for water modellers covering numerical methods, data analysis, and hydraulic modeling"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=1.24.0",
+    "pandas>=2.0.0",
+    "matplotlib>=3.7.0",
+    "scipy>=1.10.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/python_for_water_modellers"]
+
+[dependency-groups]
+dev = [
+    "jupyter>=1.0.0",
+    "ipykernel>=6.25.0",
+    "jupyter-book>=2.0.0",  # v2.x uses modern MyST format
+    "sphinx-design>=0.5.0",
+    "sphinx-copybutton>=0.5.0",
+]
