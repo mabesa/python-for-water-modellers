@@ -40,21 +40,21 @@ jobs:
         run: |
           uv sync --all-groups
       
-      - name: Build Jupyter Book
+      - name: Build Jupyter Book site
         run: |
-          uv run jupyter-book build --html .
+          uv run jupyter-book build --site .
       
       - name: List build output
         run: |
           echo "Contents of _build directory:"
           ls -la _build/ || echo "_build directory not found"
-          echo "Contents of _build/html directory:"
-          ls -la _build/html/ || echo "_build/html directory not found"
+          echo "Contents of _build/site directory:"
+          ls -la _build/site/ || echo "_build/site directory not found"
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '_build/html'
+          path: '_build/site'
 
   deploy:
     needs: build
