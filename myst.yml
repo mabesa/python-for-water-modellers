@@ -25,6 +25,10 @@ project:
     - file: README.md
     - file: tutorials/00_introduction.ipynb
       title: Introduction & Prerequisites
+    - file: tutorials/01a_vscode_installation.ipynb
+      title: Installing VS Code
+    - file: tutorials/01b_python_extension.ipynb
+      title: Python Extension Setup
 site:
   title: Python for Water Modellers
   options:
