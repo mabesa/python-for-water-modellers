@@ -3,7 +3,7 @@ name = "python-for-water-modellers"
 version = "0.1.0"
 description = "A Python tutorial for water modellers covering numerical methods, data analysis, and hydraulic modeling"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.10"
 dependencies = [
     "numpy>=1.24.0",
     "pandas>=2.0.0",
