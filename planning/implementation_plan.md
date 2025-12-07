@@ -599,6 +599,23 @@ Before creating each module, verify:
 
 ---
 
+## Recent Enhancements (Dec 7, 2025 - v1.1)
+
+✅ **Module 3a: Added "Coming from Excel?" section**
+- Excel → Python translation table
+- Motivates the switch with concrete benefits
+- Mindset shift explanation (interactive vs. scripted)
+- Placed at start of module to build confidence
+
+✅ **Module 4b: Added Flow Duration Curve section**
+- Full explanation of FDC purpose and interpretation
+- Working code with log-scale plot
+- Q10/Q50/Q90 reference lines
+- Flow variability ratio metric
+- Catchment characterization guidance
+
+---
+
 ## Remaining Tasks
 
 1. ⏭️ Execute all notebooks with outputs (for visual results in published book)
@@ -611,6 +628,7 @@ Before creating each module, verify:
 - Video supplements / screen recordings
 - Translations to other languages
 - Project logo
+- Swiss-specific data (CAMELS-CH stations)
 
 ---
 
