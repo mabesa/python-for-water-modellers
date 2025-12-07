@@ -19,8 +19,11 @@ _build/
 # VS Code
 .vscode/
 
-# Data files (downloaded, not tracked)
-data/
+# Data files (downloaded, not tracked by default)
+data/*
+
+# But track the tutorial example data file for Binder support
+!data/camels_01013500_discharge.csv
 
 # PyGeoHydro/aiohttp cache
 tutorials/cache/
