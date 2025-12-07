@@ -35,10 +35,14 @@ project:
       title: Installing and Using uv
     - file: tutorials/03a_python_basics.ipynb
       title: Python Basics for Water Modellers
+    - file: tutorials/03b_ai_assisted_coding.ipynb
+      title: AI-Assisted Coding
     - file: tutorials/04a_getting_data.ipynb
       title: Getting Hydrological Data
     - file: tutorials/04b_discharge_analysis.ipynb
       title: Your First Water Script
+    - file: tutorials/05_resources_next_steps.ipynb
+      title: Resources & Next Steps
 site:
   title: Python for Water Modellers
   options:
