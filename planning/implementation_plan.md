@@ -96,9 +96,7 @@ python-for-water-modellers/
 │   └── camels_01013500_discharge.csv # ✅ Sample data (downloaded in Module 3a)
 ├── examples/                          # For future standalone scripts
 ├── planning/
-│   ├── implementation_plan.md        # This file
-│   ├── tutorial_plan.md              # Master planning document (reference)
-│   └── llm_coding_guide.md           # Reference content (Module 3b now complete)
+│   └── implementation_plan.md        # This file (project status & reference)
 ├── src/
 │   └── python_for_water_modellers/
 │       ├── __init__.py
