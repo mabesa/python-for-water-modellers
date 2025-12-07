@@ -1,0 +1,3 @@
+#!/bin/bash
+# Install dependencies from pyproject.toml
+pip install .
