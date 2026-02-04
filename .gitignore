@@ -19,6 +19,9 @@ _build/
 # VS Code
 .vscode/
 
+# Serena
+.serena/
+
 # Data files (downloaded, not tracked by default)
 data/*
 
