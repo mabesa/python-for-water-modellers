@@ -9,6 +9,10 @@ dependencies = [
     "pandas>=2.0.0",
     "matplotlib>=3.7.0",
     "scipy>=1.10.0",
+]
+
+[project.optional-dependencies]
+data = [
     "pygeohydro>=0.19.4",
 ]
 
@@ -20,6 +24,13 @@ build-backend = "hatchling.build"
 packages = ["src/python_for_water_modellers"]
 
 [dependency-groups]
+binder = [
+    "editables>=0.5",
+    "hatchling>=1.29.0",
+]
+data = [
+    "pygeohydro>=0.19.4",
+]
 dev = [
     "jupyter>=1.0.0",
     "ipykernel>=6.25.0",

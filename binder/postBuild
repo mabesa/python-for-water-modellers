@@ -1,12 +1,13 @@
 #!/bin/bash
 set -euxo pipefail
 
-# Install the local package after repo2docker has installed the pinned
-# third-party dependencies from binder/requirements.txt.
-python -m pip install --no-deps -e .
+# Install the local package after repo2docker has installed the lightweight
+# third-party dependencies from binder/requirements.txt. Heavy hydrology
+# packages stay in the local/data dependency group and are skipped on Binder.
+python -m pip install --no-build-isolation --no-deps -e .
 
 # Confirm the resolved environment is internally consistent.
 python -m pip check
 
-# Fail the Binder build early if the tutorial runtime is incomplete.
-python -c "import matplotlib, numpy, pandas, pygeohydro; from python_for_water_modellers import get_data_path; print(f'Binder data path: {get_data_path()}')"
+# Fail the Binder build early if the lightweight tutorial runtime is incomplete.
+python -c "import matplotlib, numpy, pandas; from python_for_water_modellers import get_data_path, sample_camels_attributes; print(f'Binder data path: {get_data_path()}'); print(sample_camels_attributes())"
