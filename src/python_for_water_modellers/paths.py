@@ -2,10 +2,10 @@
 Path utilities for Python for Water Modellers notebooks.
 
 This module provides functions for resolving data paths that work
-across different environments (local development, Binder, etc.).
+across local development and Binder sessions without relying on a
+single working-directory assumption.
 """
 
-import os
 from pathlib import Path
 
 
@@ -14,8 +14,9 @@ def get_data_path() -> Path:
     Get the correct path to the data folder.
 
     Works in multiple environments:
-    - Local development (VS Code, Jupyter Lab from repo root)
-    - Binder cloud environment
+    - Local development from the repository root
+    - Local development from the tutorials/ directory
+    - Binder cloud sessions
 
     Returns:
     --------
@@ -28,18 +29,15 @@ def get_data_path() -> Path:
     >>> DATA_PATH = get_data_path()
     >>> discharge_file = DATA_PATH / 'camels_01013500_discharge.csv'
     """
-    # Check if running in Binder (cloud environment)
-    if 'BINDER_REQUEST' in os.environ or 'BINDER_LAUNCH_HOST' in os.environ:
-        # Binder: repo is cloned to home directory, data is at ~/data/
-        data_path = Path.home() / 'data'
-    elif Path('../data').exists():
-        # Local: notebook is in tutorials/, data is at ../data/
-        data_path = Path('../data')
-    elif Path('data').exists():
-        # Alternative: already at repo root
-        data_path = Path('data')
-    else:
-        # Fallback: assume tutorials/ location
-        data_path = Path('../data')
+    repo_root = Path(__file__).resolve().parents[2]
+    candidates = (
+        Path.cwd() / "data",
+        Path.cwd().parent / "data",
+        repo_root / "data",
+    )
 
-    return data_path
+    for candidate in candidates:
+        if candidate.is_dir():
+            return candidate.resolve()
+
+    return (repo_root / "data").resolve()

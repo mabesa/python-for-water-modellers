@@ -1,6 +1,6 @@
 # Welcome to Python for Water Modellers! 🌊
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mabesa/python-for-water-modellers/main)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mabesa/python-for-water-modellers/main?urlpath=lab/tree/tutorials/00_introduction.ipynb)
 
 **📖 [Read the Tutorial Online](https://mabesa.github.io/python-for-water-modellers/)**
 
@@ -60,7 +60,7 @@ Find the best learning resources and community support for your continued journe
 Simply navigate through the chapters using the sidebar. Each module includes explanations, code examples, and practical exercises.
 
 ### Option 2: Run in the Cloud with Binder (No Installation!)
-Click the **Launch Binder** badge above to open the notebooks in a free cloud environment. This lets you run and modify code without installing anything on your computer.
+Click the **Launch Binder** badge above to open Module 0 directly in JupyterLab. This lets you run and modify code without installing anything on your computer. The first launch can take a minute or two while Binder builds or wakes up the environment.
 
 ### Option 3: Run Locally with Jupyter Notebooks
 If you want to follow along by running code yourself:

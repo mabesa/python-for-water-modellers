@@ -1,0 +1,8 @@
+#!/bin/bash
+set -euo pipefail
+
+# Use a writable Matplotlib cache location in ephemeral Binder sessions.
+export MPLCONFIGDIR="${MPLCONFIGDIR:-${HOME}/.cache/matplotlib}"
+mkdir -p "${MPLCONFIGDIR}"
+
+exec "$@"
