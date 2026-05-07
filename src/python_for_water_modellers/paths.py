@@ -17,11 +17,14 @@ def get_data_path() -> Path:
     - Local development from the repository root
     - Local development from the tutorials/ directory
     - Binder cloud sessions
+    - A fresh user project that doesn't have a data folder yet
+      (one is created next to the current working directory)
 
     Returns:
     --------
     Path
-        Path object pointing to the data directory
+        Path object pointing to the data directory. The directory is
+        guaranteed to exist on return.
 
     Examples:
     ---------
@@ -40,4 +43,6 @@ def get_data_path() -> Path:
         if candidate.is_dir():
             return candidate.resolve()
 
-    return (repo_root / "data").resolve()
+    fallback = (Path.cwd() / "data").resolve()
+    fallback.mkdir(parents=True, exist_ok=True)
+    return fallback
