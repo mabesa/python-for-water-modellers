@@ -1,0 +1,40 @@
+name: Link Check
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "32 5 * * 1"
+  pull_request:
+    paths:
+      - README.md
+      - myst.yml
+      - tutorials/**
+      - scripts/check_links.py
+      - .github/workflows/link-check.yml
+  push:
+    branches:
+      - main
+    paths:
+      - README.md
+      - myst.yml
+      - tutorials/**
+      - scripts/check_links.py
+      - .github/workflows/link-check.yml
+
+permissions:
+  contents: read
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check external documentation links
+        run: python scripts/check_links.py README.md myst.yml tutorials

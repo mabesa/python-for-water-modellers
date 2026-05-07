@@ -11,7 +11,7 @@ project:
     - .github/**
     - _build/**
     - LICENSE
-  thebe:
+  jupyter:
     binder:
       repo: mabesa/python-for-water-modellers
       provider: github

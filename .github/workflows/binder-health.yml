@@ -1,0 +1,37 @@
+name: Binder Health
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 5 * * *"
+  push:
+    branches:
+      - main
+    paths:
+      - binder/**
+      - README.md
+      - myst.yml
+      - pyproject.toml
+      - uv.lock
+      - tutorials/**
+      - src/**
+      - scripts/check_binder.py
+      - .github/workflows/binder-health.yml
+
+permissions:
+  contents: read
+
+jobs:
+  binder-health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Launch Binder and check Jupyter
+        run: python scripts/check_binder.py --repo mabesa/python-for-water-modellers --ref main --timeout 900

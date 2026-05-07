@@ -5,4 +5,12 @@ set -euo pipefail
 export MPLCONFIGDIR="${MPLCONFIGDIR:-${HOME}/.cache/matplotlib}"
 mkdir -p "${MPLCONFIGDIR}"
 
+# Keep scientific Python libraries from over-allocating threads and memory in
+# mybinder.org's small shared containers.
+export MALLOC_ARENA_MAX="${MALLOC_ARENA_MAX:-2}"
+export OMP_NUM_THREADS="${OMP_NUM_THREADS:-1}"
+export OPENBLAS_NUM_THREADS="${OPENBLAS_NUM_THREADS:-1}"
+export MKL_NUM_THREADS="${MKL_NUM_THREADS:-1}"
+export NUMEXPR_MAX_THREADS="${NUMEXPR_MAX_THREADS:-1}"
+
 exec "$@"
