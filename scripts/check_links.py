@@ -21,10 +21,15 @@ URL_RE = re.compile(r"https?://[^\s<>\]\)'\"`\\]+")
 TRAILING_PUNCTUATION = ".,;:!?)]}"
 BOT_BLOCKED_STATUSES = {401, 403, 405, 429}
 # Hosts that are reachable from real user networks but frequently time out
-# from US-based CI runners (geo / IP-reputation filtering). A clean timeout
-# from one of these hosts is treated as OK rather than a hard failure.
+# from US-based CI runners (geo / IP-reputation filtering, slow shared
+# hosting, etc.). A clean timeout from one of these hosts is treated as
+# OK rather than a hard failure.
 TIMEOUT_TOLERATED_HOSTS = {
     "www.hydrodaten.admin.ch",
+    # Free Python textbooks on small / shared hosting that intermittently
+    # time out from GitHub Actions runners but resolve normally elsewhere.
+    "automatetheboringstuff.com",
+    "greenteapress.com",
 }
 
 
