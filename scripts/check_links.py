@@ -9,6 +9,7 @@ import json
 import re
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 from dataclasses import dataclass
 from pathlib import Path
@@ -19,6 +20,12 @@ SKIP_DIRS = {".git", ".ipynb_checkpoints", ".mypy_cache", ".pytest_cache", ".ruf
 URL_RE = re.compile(r"https?://[^\s<>\]\)'\"`\\]+")
 TRAILING_PUNCTUATION = ".,;:!?)]}"
 BOT_BLOCKED_STATUSES = {401, 403, 405, 429}
+# Hosts that are reachable from real user networks but frequently time out
+# from US-based CI runners (geo / IP-reputation filtering). A clean timeout
+# from one of these hosts is treated as OK rather than a hard failure.
+TIMEOUT_TOLERATED_HOSTS = {
+    "www.hydrodaten.admin.ch",
+}
 
 
 @dataclass(frozen=True)
@@ -101,9 +108,19 @@ def request_once(url: str, method: str, timeout: float) -> tuple[int, str]:
         return response.status, response.reason
 
 
+def _is_timeout_error(error: BaseException) -> bool:
+    if isinstance(error, TimeoutError):
+        return True
+    reason = getattr(error, "reason", None)
+    if isinstance(reason, TimeoutError):
+        return True
+    return "timed out" in str(error).lower()
+
+
 def check_url(url: str, sources: set[str], timeout: float) -> CheckResult:
     methods = ("HEAD", "GET")
     last_error = ""
+    failures_were_only_timeouts = True
 
     for method in methods:
         try:
@@ -115,6 +132,8 @@ def check_url(url: str, sources: set[str], timeout: float) -> CheckResult:
                 continue
         except (urllib.error.URLError, TimeoutError, OSError) as error:
             last_error = str(error)
+            if not _is_timeout_error(error):
+                failures_were_only_timeouts = False
             continue
 
         if 200 <= status < 400:
@@ -128,6 +147,17 @@ def check_url(url: str, sources: set[str], timeout: float) -> CheckResult:
                 tuple(sorted(sources)),
             )
         last_error = f"HTTP {status} {reason}"
+        failures_were_only_timeouts = False
+
+    host = urllib.parse.urlparse(url).netloc.lower()
+    if failures_were_only_timeouts and host in TIMEOUT_TOLERATED_HOSTS:
+        return CheckResult(
+            url,
+            True,
+            "timeout",
+            f"{last_error}; host known to time out from CI runners but is reachable from real networks",
+            tuple(sorted(sources)),
+        )
 
     return CheckResult(url, False, "broken", last_error or "request failed", tuple(sorted(sources)))
 
