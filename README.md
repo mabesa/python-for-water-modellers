@@ -1,7 +1,5 @@
 # Welcome to Python for Water Modellers! 🌊
 
-**📖 [Read the Tutorial Online](https://mabesa.github.io/python-for-water-modellers/)**
-
 **Learn Python programming tailored specifically for water resources engineers, hydrologists, and hydraulic modellers.**
 
 This hands-on tutorial will take you from complete beginner to confidently writing Python scripts for real-world water engineering tasks—analyzing discharge data, calculating hydraulic parameters, and automating repetitive tasks that currently consume hours of your time.
@@ -56,6 +54,8 @@ Find the best learning resources and community support for your continued journe
 
 ### Option 1: Read Online (Easiest)
 Simply navigate through the chapters using the sidebar. Each module includes explanations, code examples, and practical exercises.
+
+**📖 [Read the Tutorial Online](https://mabesa.github.io/python-for-water-modellers/)**
 
 ### Option 2: Try the Notebooks Online with Binder (No Installation!)
 
