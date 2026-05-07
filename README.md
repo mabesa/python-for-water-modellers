@@ -1,3 +1,10 @@
+<a href="https://ethz.ch/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="images/eth-logo-neg.svg">
+    <img alt="ETH Zurich" src="images/eth-logo-pos.svg" width="100">
+  </picture>
+</a>
+
 # Welcome to Python for Water Modellers! 🌊
 
 **Learn Python programming tailored specifically for water resources engineers, hydrologists, and hydraulic modellers.**
@@ -128,21 +135,11 @@ Detailed installation instructions are in Module 1 and Module 2.
 3. **Dependencies installed?** Run `uv sync --all-groups`
 4. **Jupyter starts?** Run `uv run jupyter lab`
 
-## Why This Tutorial Is Different
-
-🎯 **Domain-Specific**: Every example uses real water engineering problems—no generic programming exercises  
-📊 **Real Data**: Work with actual USGS discharge data from CAMELS, not synthetic datasets  
-🤖 **AI-Powered**: Learn to leverage modern AI coding assistants from day one  
-⚡ **Modern Tools**: Uses current Python tools such as uv, VS Code, and JupyterLab
-💡 **Practical Focus**: Build skills you'll use immediately in your daily work
-
 ## Prerequisites
 
 - A computer running Windows, macOS, or Linux
 - Willingness to learn and experiment
 - Basic understanding of water engineering concepts (discharge, catchments, hydraulic calculations)
-
-**No programming experience necessary!**
 
 ## Ready to Begin?
 
@@ -184,3 +181,13 @@ uv run jupyter-book start
 # Or build static HTML
 uv run jupyter-book build --html
 ```
+
+## Acknowledgments
+
+This tutorial was developed as a companion to the ETH Zurich Master's course [Applied Groundwater Modelling](https://github.com/mabesa/applied_groundwater_modelling), to help students arrive ready to write Python.
+
+Funded by the ETH Zurich Department of Earth and Planetary Sciences and the Rectors Innovedum Fund ([project link](https://innovedumprojects.ethz.ch/projects/groundwater-in-action-real-world-problem-centered-approach-with-students-collaborative-projects/)).
+
+Computational resources for development provided by [hydrosolutions](https://hydrosolutions.ch).
+
+<a href="https://hydrosolutions.ch"><img alt="hydrosolutions" src="images/hydrosolutionsLogo_Vec.png" width="80"></a>
