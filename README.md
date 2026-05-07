@@ -64,6 +64,8 @@ Click the **Launch Binder** badge above to open Module 0 directly in JupyterLab.
 
 Binder is best for previewing one or two notebooks. Public mybinder.org sessions are shared, ephemeral environments with limited memory; the [Binder user guidelines](https://mybinder.readthedocs.io/en/latest/about/user-guidelines.html) describe a 1 GB guaranteed / 2 GB maximum memory range and note that sessions are not guaranteed to stay running indefinitely. If Binder disconnects after several notebooks, close unused notebooks, restart the kernel, or relaunch Binder. For working through the full course, use a local Jupyter installation.
 
+When using Binder, keep only one or two notebooks running at a time. Before moving on, use **Kernel → Shut Down Kernel** for notebooks you are finished with, or close the notebook tab and choose to shut down its kernel. Binder is configured to cull idle kernels automatically, but shutting them down yourself is the quickest way to free memory in a small cloud session.
+
 ### Option 3: Run Locally with Jupyter Notebooks (Recommended)
 If you want the most reliable setup for the whole tutorial:
 

@@ -6,6 +6,11 @@ set -euxo pipefail
 # packages stay in the local/data dependency group and are skipped on Binder.
 python -m pip install --no-build-isolation --no-deps -e .
 
+# Install Binder-specific Jupyter settings into the config directory that the
+# launched server reads at runtime.
+mkdir -p "${HOME}/.jupyter"
+cp binder/jupyter_server_config.py "${HOME}/.jupyter/jupyter_server_config.py"
+
 # Confirm the resolved environment is internally consistent.
 python -m pip check
 
