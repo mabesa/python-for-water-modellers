@@ -1,7 +1,5 @@
 # Welcome to Python for Water Modellers! 🌊
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mabesa/python-for-water-modellers/main?urlpath=lab/tree/tutorials/00_introduction.ipynb)
-
 **📖 [Read the Tutorial Online](https://mabesa.github.io/python-for-water-modellers/)**
 
 **Learn Python programming tailored specifically for water resources engineers, hydrologists, and hydraulic modellers.**
@@ -59,12 +57,48 @@ Find the best learning resources and community support for your continued journe
 ### Option 1: Read Online (Easiest)
 Simply navigate through the chapters using the sidebar. Each module includes explanations, code examples, and practical exercises.
 
-### Option 2: Run in the Cloud with Binder (No Installation!)
-Click the **Launch Binder** badge above to open Module 0 directly in JupyterLab. This lets you run and modify code without installing anything on your computer. The first launch can take a minute or two while Binder builds or wakes up the environment.
+### Option 2: Try the Notebooks Online with Binder (No Installation!)
 
-Binder is best for previewing one or two notebooks. Public mybinder.org sessions are shared, ephemeral environments with limited memory; the [Binder user guidelines](https://mybinder.readthedocs.io/en/latest/about/user-guidelines.html) describe a 1 GB guaranteed / 2 GB maximum memory range and note that sessions are not guaranteed to stay running indefinitely. If Binder disconnects after several notebooks, close unused notebooks, restart the kernel, or relaunch Binder. For working through the full course, use a local Jupyter installation.
+[![Launch Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mabesa/python-for-water-modellers/main?urlpath=lab/tree/tutorials/00_introduction.ipynb)
 
-When using Binder, keep only one or two notebooks running at a time. Before moving on, use **Kernel → Shut Down Kernel** for notebooks you are finished with, or close the notebook tab and choose to shut down its kernel. Binder is configured to cull idle kernels automatically, but shutting them down yourself is the quickest way to free memory in a small cloud session.
+Click the **Launch Binder** badge above to open Module 0 in JupyterLab. Binder lets you try the notebooks in your browser without installing Python, but it is a small temporary cloud computer. Public mybinder.org sessions are shared and memory-limited; the [Binder user guidelines](https://mybinder.readthedocs.io/en/latest/about/user-guidelines.html) describe a 1 GB guaranteed / 2 GB maximum memory range and note that sessions are not guaranteed to stay running indefinitely.
+
+Use Binder as a preview or short workshop environment. For working through the full course without interruptions, use the local Jupyter setup in Option 3.
+
+#### What to Run on Binder
+
+| Notebook | What to do online |
+| --- | --- |
+| `00_introduction.ipynb` | Read only |
+| `01a_vscode_installation.ipynb` | Read only; this explains local setup |
+| `01b_python_extension.ipynb` | Read only; this explains local setup |
+| `02a_environment_concepts.ipynb` | Read only |
+| `02b_installing_uv.ipynb` | Read only; this explains local setup |
+| `03a_python_basics.ipynb` | Run this one |
+| `03b_ai_assisted_coding.ipynb` | Run or edit lightly |
+| `04a_getting_data.ipynb` | Run this one |
+| `04b_discharge_analysis.ipynb` | Run this one |
+| `05_resources_next_steps.ipynb` | Read only |
+
+#### How to Use Binder Without Getting Stuck
+
+1. Click **Launch Binder** and wait until JupyterLab opens.
+2. Open one notebook from the `tutorials/` folder.
+3. For read-only notebooks, just read them. You do not need to run anything.
+4. For code notebooks, run cells one at a time with `Shift+Enter`, or use **Run → Run All Cells**.
+5. Before opening the next code notebook, shut down the old kernel: **Kernel → Shut Down Kernel**.
+6. Keep at most one or two notebooks open at the same time.
+
+#### If Binder Shows “Server Connection Error”
+
+This usually means the temporary Binder server ran out of resources or was restarted. Your internet connection may be fine.
+
+1. Wait 20-30 seconds and refresh the browser tab once.
+2. If it still does not reconnect, close the Binder tab.
+3. Click the **Launch Binder** badge again to start a fresh session.
+4. Reopen the notebook you were working on and continue from there.
+
+Binder sessions are temporary. If you edited a notebook or created a file that you want to keep, download it before closing the session: right-click the file in JupyterLab's left file browser and choose **Download**.
 
 ### Option 3: Run Locally with Jupyter Notebooks (Recommended)
 If you want the most reliable setup for the whole tutorial:
