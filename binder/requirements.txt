@@ -33,7 +33,7 @@ packaging==26.2
     #   matplotlib
 pandas==2.3.3 ; python_full_version < '3.11'
     # via python-for-water-modellers
-pandas==3.0.2 ; python_full_version >= '3.11'
+pandas==3.0.3 ; python_full_version >= '3.11'
     # via python-for-water-modellers
 pathspec==1.1.1
     # via hatchling
