@@ -35,7 +35,7 @@ data = [
 ]
 dev = [
     "jupyter>=1.0.0",
-    "ipykernel>=6.25.0",
+    "ipykernel>=7.3.0",
     "jupyter-book>=2.0.0",  # v2.x uses modern MyST format
     "sphinx-design>=0.5.0",
     "sphinx-copybutton>=0.5.0",
