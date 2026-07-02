@@ -37,7 +37,7 @@ pandas==3.0.2 ; python_full_version >= '3.11'
     # via python-for-water-modellers
 pathspec==1.1.1
     # via hatchling
-pillow==12.2.0
+pillow==12.3.0
     # via matplotlib
 pluggy==1.6.0
     # via hatchling
