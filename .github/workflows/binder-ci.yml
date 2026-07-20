@@ -102,3 +102,45 @@ jobs:
       - name: Import the tutorial runtime
         run: |
           python -c "import matplotlib, numpy, pandas; from python_for_water_modellers import get_data_path, sample_camels_attributes; print(f'Binder data path: {get_data_path()}'); print(sample_camels_attributes())"
+
+  execute-notebooks:
+    name: Tutorial notebooks execute
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    # The site build renders each notebook's stored outputs rather than running
+    # it, so without this job a dependency upgrade can break every tutorial
+    # while every other check stays green. Runs in the Binder environment with
+    # BINDER_REQUEST set, so notebooks take the same lightweight path a reader
+    # on Binder gets rather than expecting the heavy data dependency group.
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install the Binder environment
+        run: |
+          python -m pip install -r binder/requirements.txt
+          python -m pip install --no-build-isolation --no-deps -e .
+
+      - name: Install execution tooling
+        run: python -m pip install nbclient nbformat ipykernel
+
+      - name: Execute notebooks
+        env:
+          BINDER_REQUEST: "1"
+        run: python scripts/execute_notebooks.py tutorials
+
+      - name: Report notebooks that modified tracked files
+        if: always()
+        run: |
+          changed="$(git status --porcelain -- . ':!*.ipynb')"
+          if [ -n "$changed" ]; then
+            echo "::notice::Executing the notebooks modified tracked files:"
+            echo "$changed"
+            echo "Module 4a writes data/camels_<id>_discharge.csv by design, so this"
+            echo "is expected today. It is reported rather than enforced because a"
+            echo "reader running that module locally sees the same diff."
+          fi
