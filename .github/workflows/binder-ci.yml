@@ -1,0 +1,105 @@
+name: Binder CI
+
+# Validates dependency changes at pull-request time. Binder Health launches the
+# real mybinder image but is hard-coded to --ref main, so it cannot validate a
+# pull request; these jobs check the PR's own content instead.
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - pyproject.toml
+      - uv.lock
+      - binder/**
+      - src/**
+      - .github/workflows/binder-ci.yml
+  push:
+    branches:
+      - main
+    paths:
+      - pyproject.toml
+      - uv.lock
+      - binder/**
+      - src/**
+      - .github/workflows/binder-ci.yml
+
+permissions:
+  contents: read
+
+env:
+  # Pinned so an upstream uv release cannot change export formatting and fail
+  # unrelated pull requests. Bump deliberately.
+  UV_VERSION: "0.11.7"
+  # Must match binder/runtime.txt, which is what repo2docker actually uses.
+  PYTHON_VERSION: "3.12"
+
+jobs:
+  build:
+    name: Build package
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: ${{ env.UV_VERSION }}
+
+      - name: Build sdist and wheel
+        run: uv build
+
+  export-sync:
+    name: Binder requirements in sync with uv.lock
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: ${{ env.UV_VERSION }}
+
+      - name: Re-export binder requirements
+        run: |
+          uv export --frozen --no-dev --group binder --no-emit-project \
+            --format requirements.txt --no-hashes -o binder/requirements.txt
+
+      - name: Fail if the committed export is stale
+        run: |
+          if ! git diff --exit-code binder/requirements.txt; then
+            echo "::error::binder/requirements.txt does not match uv.lock."
+            echo "Regenerate it with the command in the file header and commit the result."
+            echo "Editing binder/requirements.txt directly does not work: it is generated."
+            exit 1
+          fi
+
+  binder-smoke:
+    name: Binder environment smoke test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    # Approximates binder/postBuild. It is not repo2docker: the base image and
+    # install order differ, and it exercises only the python_full_version >=
+    # '3.11' resolution branch. Catches broken installs and imports, not image
+    # build problems. Binder Health remains the real check, on schedule/main.
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install binder requirements
+        run: python -m pip install -r binder/requirements.txt
+
+      - name: Install the local package as postBuild does
+        run: python -m pip install --no-build-isolation --no-deps -e .
+
+      - name: Check the resolved environment is internally consistent
+        run: python -m pip check
+
+      - name: Import the tutorial runtime
+        run: |
+          python -c "import matplotlib, numpy, pandas; from python_for_water_modellers import get_data_path, sample_camels_attributes; print(f'Binder data path: {get_data_path()}'); print(sample_camels_attributes())"
