@@ -6,13 +6,12 @@ name: Binder CI
 
 on:
   workflow_dispatch:
+  # Deliberately unfiltered. These jobs are required status checks on main, and
+  # a required check that is skipped by a paths filter never reports, leaving
+  # the pull request blocked forever rather than passing. The whole workflow
+  # takes well under a minute, so running it on every pull request is cheaper
+  # than the failure mode it avoids.
   pull_request:
-    paths:
-      - pyproject.toml
-      - uv.lock
-      - binder/**
-      - src/**
-      - .github/workflows/binder-ci.yml
   push:
     branches:
       - main
