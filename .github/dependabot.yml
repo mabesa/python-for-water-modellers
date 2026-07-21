@@ -7,7 +7,9 @@ updates:
   #
   # When a uv update bumps a package in the binder group, uv.lock changes but
   # the export does not, so binder-ci's export-sync check goes red. Regenerate
-  # and push to the branch:
+  # with the uv version pinned as UV_VERSION in binder-ci.yml (a different uv
+  # can reformat the export and cause a spurious sync failure) and push to the
+  # branch:
   #   uv export --frozen --no-dev --group binder --no-emit-project \
   #     --format requirements.txt --no-hashes -o binder/requirements.txt
   - package-ecosystem: uv

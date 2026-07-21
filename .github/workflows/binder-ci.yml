@@ -126,21 +126,27 @@ jobs:
           python -m pip install --no-build-isolation --no-deps -e .
 
       - name: Install execution tooling
-        run: python -m pip install nbclient nbformat ipykernel
+        # pip check catches a version conflict between this tooling and the
+        # installed Binder environment, so a broken resolution fails here
+        # rather than surfacing as a confusing notebook error below.
+        run: |
+          python -m pip install nbclient nbformat ipykernel
+          python -m pip check
 
       - name: Execute notebooks
         env:
           BINDER_REQUEST: "1"
         run: python scripts/execute_notebooks.py tutorials
 
-      - name: Report notebooks that modified tracked files
+      - name: Fail if executing the notebooks changed the working tree
         if: always()
         run: |
-          changed="$(git status --porcelain -- . ':!*.ipynb')"
+          changed="$(git status --porcelain -- .)"
           if [ -n "$changed" ]; then
-            echo "::notice::Executing the notebooks modified tracked files:"
+            echo "::error::Executing the notebooks changed the working tree."
             echo "$changed"
-            echo "Module 4a writes data/camels_<id>_discharge.csv by design, so this"
-            echo "is expected today. It is reported rather than enforced because a"
-            echo "reader running that module locally sees the same diff."
+            echo "Notebooks must leave the tree clean; generated output belongs in"
+            echo "the git-ignored data/outputs/. If a new output path is intended,"
+            echo "add it to .gitignore; otherwise fix the notebook."
+            exit 1
           fi

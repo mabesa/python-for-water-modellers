@@ -92,8 +92,11 @@ def main() -> int:
     args = parse_args()
     notebooks = iter_notebooks(args.paths)
     if not notebooks:
-        print("No notebooks found.")
-        return 0
+        # Treat "nothing to execute" as a failure: in CI it almost always means
+        # a renamed directory or a mistyped path, which would otherwise pass
+        # silently having executed nothing.
+        print("No notebooks found.", file=sys.stderr)
+        return 1
 
     print(f"Executing {len(notebooks)} notebooks...")
     results: list[ExecutionResult] = []
