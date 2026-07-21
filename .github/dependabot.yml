@@ -1,10 +1,16 @@
 version: 2
 updates:
+  # uv owns all dependency versions via uv.lock. binder/requirements.txt is a
+  # generated export of it, not a separate source, so it is deliberately not
+  # registered as its own ecosystem: a pip updater editing it directly drifts
+  # it from uv.lock, which the export-sync check in binder-ci.yml then rejects.
+  #
+  # When a uv update bumps a package in the binder group, uv.lock changes but
+  # the export does not, so binder-ci's export-sync check goes red. Regenerate
+  # and push to the branch:
+  #   uv export --frozen --no-dev --group binder --no-emit-project \
+  #     --format requirements.txt --no-hashes -o binder/requirements.txt
   - package-ecosystem: uv
     directory: "/"
-    schedule:
-      interval: weekly
-  - package-ecosystem: pip
-    directory: "/binder"
     schedule:
       interval: weekly
